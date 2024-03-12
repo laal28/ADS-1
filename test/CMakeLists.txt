@@ -22,7 +22,7 @@ target_link_libraries(
 )
 
 target_compile_definitions(${PROJECT_NAME}.test 
-  PRIVATE TEST_DIR="${CMAKE_CURRENT_LIST_DIR}/test") // TODO: Ask if this is necessary
+  PRIVATE TEST_DIR="${CMAKE_CURRENT_LIST_DIR}/test") # TODO: Ask if this is necessary
 
 include(GoogleTest)
 gtest_discover_tests(
