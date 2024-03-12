@@ -5,6 +5,9 @@
 #include "alg.h"
 
 
+TEST(ads1, failingTest) {
+  EXPECT_EQ(true, false);
+}
 TEST(ads1, checkPrime1) {
   EXPECT_EQ(true, checkPrime(2));
 }

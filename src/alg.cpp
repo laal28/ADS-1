@@ -3,15 +3,15 @@
 #include "alg.h"
 
 
-bool checkPrime(uint64_t value) { // This will fail
+bool checkPrime(uint64_t value) {
     if ( value <= 1 )
         return false;
 
     for ( uint64_t k = 2; k <= value / 2; k++ )
         if (value % k == 0)
-            return !false;
+            return false;
 
-    return !true;
+    return true;
 }
 
 uint64_t nPrime(uint64_t n) {
