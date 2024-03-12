@@ -30,16 +30,20 @@ jobs:
 
       - name: Merge reports
         if: always()
+        id: reports_merge
         run: jrm ./build/testingReport/junit_all_testing_reports.xml "./build/testingReport/*.xml"
         continue-on-error: true
-
+      - run: echo "Seems somethind happend wrong. But, if tests are ok - there is nothing to worry about. Most times, it is just repo settings issue."
+          if: job.steps.reports_merge.status == failure()
+      
       - name: Test Reporter
         if: always()
+        id: test_reporter
         uses: dorny/test-reporter@v1.8.0
         with:
           name: CMake GTests                                         # Name of the check run which will be created
           path: ./build/testingReport/junit_all_testing_reports.xml  # Path to test results
           reporter: java-junit                                       # Format of test results
           fail-on-error: false
-        - run: echo "Seems somethind happend wrong. But, if tests are ok - there is nothing to worry about. Most times, it is just repo settings issue."
-          if: job.steps.bad.status == failure()
+      - run: echo "Seems somethind happend wrong. But, if tests are ok - there is nothing to worry about. Most times, it is just repo settings issue."
+        if: job.steps.test_reporter.status == failure()
