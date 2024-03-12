@@ -41,7 +41,7 @@ TEST(ads1, sumPrime1) {
   // uint64_t res = sumPrime(2000000);
   // uint64_t expected = 142913828922;
   // EXPECT_EQ(expected, res);
-  EXPECT_TRUE( true );
+  EXPECT_TRUE(true);
 }
 TEST(ads1, sumPrime2) {
   uint64_t res = sumPrime(10);
