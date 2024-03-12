@@ -34,7 +34,7 @@ jobs:
         run: jrm ./build/testingReport/junit_all_testing_reports.xml "./build/testingReport/*.xml"
         continue-on-error: true
       - run: echo "Seems somethind happend wrong. But, if tests are ok - there is nothing to worry about. Most times, it is just repo settings issue."
-          if: job.steps.reports_merge.status == failure()
+        if: job.steps.reports_merge.status == failure()
       
       - name: Test Reporter
         if: always()
