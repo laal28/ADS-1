@@ -27,14 +27,11 @@ jobs:
       - name: Install JUnit report merger
         if: always()
         run: npm install -g junit-report-merger --output-on-failure
-        with:
-          fail-on-error: false
 
       - name: Merge reports
         if: always()
         run: jrm ./build/testingReport/junit_all_testing_reports.xml "./build/testingReport/*.xml"
-        with:
-          fail-on-error: false
+        continue-on-error: true
 
       - name: Test Reporter
         if: always()
